@@ -188,6 +188,13 @@ class CsrfToken {
         return ($_SERVER['REQUEST_TIME'] - $_SESSION['csrf']['time']) < $timeout;
     }
 
+    public function preCheckTimeout($timeout=\NULL) {
+        if (!$timeout) {
+            $timeout = $this->timeout;
+        }
+        return ($_SERVER['REQUEST_TIME'] - $_SESSION['csrf']['time']) < $timeout / 2;
+    }
+
     /**
      *  Checks the token to authenticate the request
      *
