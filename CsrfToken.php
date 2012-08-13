@@ -220,11 +220,6 @@ class CsrfToken {
         // First check if csrf information is present in the session
         if (isset($_SESSION['csrf'])) {
 
-            // Check the timeliness of the request
-            if (!$this->checkTimeout($timeout)) {
-                return \FALSE;
-            }
-
             // Check if there is a session id
             if (\session_id()) {
                 // Check if response contains a usable csrf token
