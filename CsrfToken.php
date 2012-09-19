@@ -79,11 +79,7 @@ class CsrfToken {
      */
     public function __construct($timeout=300, $acceptGet=\FALSE){
         $this->timeout = $timeout;
-        if (\session_id()) {
-            $this->acceptGet = (bool) $acceptGet;
-        } else {
-            throw new \Exception('Could not find session id', 1);
-        }
+        $this->acceptGet = (bool) $acceptGet;
     }
 
     /**
